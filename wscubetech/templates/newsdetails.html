@@ -1,0 +1,28 @@
+{% include "header.html" %}
+
+    {% block content %}
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs" data-aos="fade-in">
+          <div class="container">
+            <h2>{{newsDetail.news_title}}</h2>
+          </div>
+        </div><!-- End Breadcrumbs -->
+    
+        <div class="container mt-2">
+          <div class="col-6">
+            {{newsDetail.news_des | safe}}
+          </div>
+        
+        <div class="col-6">
+          {% if newsDetail.news_img != NULL %}
+          <img src="/media/{{newsDetail.news_img}}" class="img-fluid"/>
+          {% endif %}
+        </div>
+      </div>
+
+    {% endblock %}
+
+{% include "footer.html" %}

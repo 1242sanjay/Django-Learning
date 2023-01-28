@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Courses</h2>
+        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+      </div>
+      <div class="container mt-2">
+        <form method='get'>
+          <input type="text" name="coursename" value=""/>
+          <input type="submit" name="submit" value="Search"/>
+        </form>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Courses Section ======= -->
+    <section id="courses" class="courses">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+          {% for course in courseData %}
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="course-item">
+              <img src="/static/img/{{course.course_img}}" class="img-fluid" alt="...">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4>{{course.course_cat}}</h4>
+                  <p class="price">{{course.course_price}}</p>
+                </div>
+
+                <h3><a href="course-details.html">{{course.course_name}}</a></h3>
+                <p>{{course.course_des}}</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="/static/img/trainers/{{course.course_author_img}}" class="img-fluid" alt="">
+                    <span>{{course.course_author}}</span>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bx bx-user"></i>&nbsp;{{course.course_learner}}
+                    &nbsp;&nbsp;
+                    <i class="bx bx-heart"></i>&nbsp;{{course.course_like}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          {% empty %}
+          No data found.
+
+          {% endfor %}
+          
+        </div>
+        <div>
+          <nav aria-label="...">
+            <ul class="pagination">
+              {% if courseData.has_previous %}
+                <li class="page-item disabled">
+                  <a class="page-link" href="/courses/?course_page={{courseData.previous_page_number}}" tabindex="-1">Previous</a>
+                </li>
+              {% endif %}
+              {% for n in pagelist %}
+              <li class="page-item"><a class="page-link" href="/courses/?course_page={{n}}">{{n}}</a></li>
+              {% endfor %}
+              {% comment %} <li class="page-item"><a class="page-link" href="/courses/?course_page={{lastpage}}">{{lastpage}}</a></li> {% endcomment %}
+              {% if courseData.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="/courses/?course_page={{courseData.next_page_number}}">Next</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+  
+        </div>
+
+      </div>
+    </section><!-- End Courses Section -->
+
+  </main><!-- End #main -->
+
+  {% endblock %}

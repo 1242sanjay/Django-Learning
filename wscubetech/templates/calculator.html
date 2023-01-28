@@ -1,0 +1,63 @@
+{% include "header.html" %}
+
+    {% block content %}
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs" data-aos="fade-in">
+          <div class="container">
+            <h2>Calculator</h2>
+            <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+          </div>
+        </div><!-- End Breadcrumbs -->
+    
+        <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form method='post' action="">
+                    {% csrf_token %}
+                    
+                    <div class="p-2">
+                        <label>First Number</label>
+                        {% if e_num1 %}
+                        <div style="color:red;">
+                            Please enter the value.
+                        </div>
+                        {% endif %}
+                        <input type="text" name="num1" class="form-control"/>
+                    </div>
+                    <div class="p-2">
+                        <label>Select Operator</label>
+                        <select name="operator" class="form-control">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                    </div>
+                    <div class="p-2">
+                        <label>Second Number</label>
+                        {% if e_num2 %}
+                        <div style="color:red;">
+                            Please enter the value.
+                        </div>
+                        {% endif %}
+                        <input type="text" name="num2" class="form-control"/>
+                    </div>
+                    <div class="p-2">
+                        <button type="submit">Calculate</button>
+                    </div>
+                    <div class="p-2">
+                        Output : {{result}}
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}
+
+{% include "footer.html" %}

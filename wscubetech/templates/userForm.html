@@ -1,0 +1,45 @@
+{% include "header.html" %}
+
+    {% block content %}
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs" data-aos="fade-in">
+          <div class="container">
+            <h2>User Form</h2>
+            <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+          </div>
+        </div><!-- End Breadcrumbs -->
+    
+        <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form method='post' action={% url 'submitform' %}>
+                    {% csrf_token %}
+
+                        {{form}}
+
+                    {% comment %} <div class="pt-4">
+                        <label for="">Value1</label>
+                        <input type="text" name="num1" value="{{n1}}" class="form-control">
+                    </div>
+                    <div class="pt-4">
+                        <label for="">Value2</label>
+                        <input type="text" name="num2" value="{{n2}}" class="form-control">
+                    </div> {% endcomment %} 
+                    <div class="pt-4">
+                        <button type="submit">Save</button>
+                    </div>
+                    <div class="p-4">
+                        Output : {{output}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}
+
+{% include "footer.html" %}

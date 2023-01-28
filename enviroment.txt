@@ -1,0 +1,18 @@
+pip install virtualenv
+virtualenv env
+cd env/Scripts
+activate
+pip list
+
+pip install django
+pip install pillow   -> for images
+
+--- now create project outside the env ---
+django-admin startproject ecommerceweb
+cd ecommerceweb
+
+
+
+
+
+
